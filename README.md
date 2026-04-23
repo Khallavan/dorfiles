@@ -25,10 +25,11 @@ chmod +x install.sh
 
 ### ¿Qué hace el script `install.sh`?
 
-1. Crea enlaces simbólicos (symlinks) de los archivos `.zshrc` y `.gitconfig` en tu directorio `home` (`~`).
-2. Instala los paquetes, aplicaciones y extensiones de VS Code definidos en el `Brewfile` utilizando Homebrew.
-3. Configura **Zsh** como tu shell predeterminado.
-4. Muestra recordatorios útiles para reinstalar herramientas globales de Node.js, Rust y Python.
+1. Verifica si **GNU Stow** está instalado (y lo instala vía `dnf` o `brew` si es necesario).
+2. Utiliza **GNU Stow** para crear enlaces simbólicos (symlinks) de tus paquetes de configuración (`zsh`, `git`) en tu directorio `home` (`~`).
+3. Instala los paquetes, aplicaciones y extensiones de VS Code definidos en el `Brewfile` utilizando Homebrew.
+4. Configura **Zsh** como tu shell predeterminado.
+5. Muestra recordatorios útiles para reinstalar herramientas globales de Node.js, Rust y Python.
 
 ## 📦 Herramientas Globales Adicionales
 

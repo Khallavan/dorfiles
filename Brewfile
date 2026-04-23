@@ -1,3 +1,4 @@
+brew "stow"
 brew "gemini-cli"
 cask "codex"
 vscode "astral-sh.ty"

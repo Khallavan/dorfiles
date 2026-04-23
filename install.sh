@@ -4,10 +4,24 @@ set -e
 DOTFILES_DIR="$HOME/dotfiles"
 echo "Starting dotfiles installation..."
 
-# 1. Symlink configurations
-echo "Symlinking dotfiles..."
-ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
-ln -sf "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
+# 0. Ensure GNU Stow is installed
+if ! command -v stow &> /dev/null; then
+    echo "GNU Stow is not installed. Attempting to install..."
+    if command -v dnf &> /dev/null; then
+        sudo dnf install -y stow
+    elif command -v brew &> /dev/null; then
+        brew install stow
+    else
+        echo "Error: Neither dnf nor brew found. Please install GNU Stow manually."
+        exit 1
+    fi
+fi
+
+# 1. Symlink configurations using GNU Stow
+echo "Symlinking dotfiles using GNU Stow..."
+cd "$DOTFILES_DIR"
+stow zsh
+stow git
 
 # 2. Restore Homebrew packages
 echo "Restoring Homebrew packages..."
