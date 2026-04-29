@@ -24,7 +24,16 @@ stow zsh
 stow git
 stow tmux
 
-# 2. Restore Homebrew packages
+# 2. Install TPM for tmux
+echo "Ensuring TPM is installed..."
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    mkdir -p "$HOME/.tmux/plugins"
+    git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+else
+    echo "TPM is already installed."
+fi
+
+# 3. Restore Homebrew packages
 echo "Restoring Homebrew packages..."
 if command -v brew &> /dev/null; then
     brew bundle --file="$DOTFILES_DIR/Brewfile"
@@ -33,7 +42,7 @@ else
     echo "Install Homebrew manually via: /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
 fi
 
-# 3. Ensure Zsh is the default shell
+# 4. Ensure Zsh is the default shell
 echo "Setting Zsh as default shell..."
 if [ "$SHELL" != "$(which zsh)" ]; then
     chsh -s "$(which zsh)"
@@ -41,7 +50,7 @@ else
     echo "Zsh is already the default shell."
 fi
 
-# 4. Reminders for other ecosystems
+# 5. Reminders for other ecosystems
 echo ""
 echo "Note: Reinstall your global tools for Rust, Node, and uv."
 echo "Check the following files in \$DOTFILES_DIR to see what you had installed:"
