@@ -32,6 +32,14 @@ chmod +x install.sh
 4. Configura **Zsh** como tu shell predeterminado.
 5. Muestra recordatorios útiles para reinstalar herramientas globales de Node.js, Rust y Python.
 
+## 🖥 Tmux
+
+La configuración de tmux se instala con **GNU Stow** desde `tmux/.tmux.conf`.
+
+Si quieres ver la guía completa de instalación, plugins, atajos y verificación, consulta:
+
+- [TMUX_TUTORIAL.md](TMUX_TUTORIAL.md)
+
 ## 📦 Herramientas Globales Adicionales
 
 El script de instalación no instala automáticamente los paquetes globales de otros ecosistemas para evitar conflictos. Sin embargo, puedes consultar los siguientes archivos en este repositorio para ver qué herramientas están recomendadas e instalarlas manualmente:
