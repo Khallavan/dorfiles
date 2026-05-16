@@ -69,6 +69,9 @@ alias c='clear'
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+# fnm
+export PATH="$HOME/.local/share/fnm:$PATH"
 if command -v fnm >/dev/null 2>&1; then
 	eval "$(fnm env --use-on-cd --shell zsh)"
 fi
